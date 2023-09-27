@@ -10,5 +10,16 @@
       ],
       "Watch": "src",
       "Minify": false
+   },
+   "hot": {
+      "TargetFolder": "./dist",
+      "Port": 8080,
+      "HotPort": 9099,
+      "BuildTarget": "./dist",
+      "Entry": [
+         "./src/main.ts"
+      ],
+      "Watch": "src",
+      "Minify": false
    }
 }

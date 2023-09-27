@@ -42,7 +42,7 @@ NOTE: We inject a script tag below the body-end-tag </body>.
 Anything that exists below the body-end-tag will be displaced    
 below this injected script.   
 ``` 
-See the example app in the `./example` folder
+See the example app in the `./dist` folder
 
 ## Usage
 To install a local copy, enter:

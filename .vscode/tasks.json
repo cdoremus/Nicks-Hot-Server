@@ -7,7 +7,7 @@
       "problemMatcher": [
         "$deno"
       ],
-      "label": "Deno: Run Hot Example"
+      "label": "Deno: Run Hot"
     },
     {
       "type": "deno",
