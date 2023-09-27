@@ -1,16 +1,17 @@
 import { debounce, join, openWebsite, serveFile } from './deps.ts'
-import { DEBUG, MINIFY } from './constants.ts'
+import { DEBUG } from './constants.ts'
 import { buildCFG, build } from './builder.ts'
 import { host, port } from './constants.ts'
 import { registerWatcher } from './watcher.ts'
 import { inject } from './injector.ts'
+import * as CFG from './config.ts'
 
 /** 
  * The folder that contains the index.html to be served   
  * this option would be entered as cli first arg - Deno.args[0]  
  * default = root folder
  */
-const targetFolder = Deno.args[0] || "";
+const targetFolder = Deno.args[0] || CFG.TargetFolder;
 
 
 /** 
@@ -72,7 +73,8 @@ Deno.serve({ hostname: host, port: port }, handleRequest)
 openWebsite(`http://localhost:${port}`)
 
 // Watch for file changes
-const fileWatch = Deno.watchFs('./');
+const fileWatch = Deno.watchFs(['./src', './dist']);
+
 const handleChange = debounce(
    (event: Deno.FsEvent) => {
       const { kind, paths } = event
@@ -83,9 +85,9 @@ const handleChange = debounce(
 
          console.log('esBuild Start!')
          const cfg: buildCFG = {
-            entry: ["./src/main.ts"],
-            minify: MINIFY,
-            out: (targetFolder.length > 0) ? `./${targetFolder}/bundle.js` : './bundle.js'
+            entry: CFG.ENTRY, 
+            minify: CFG.MINIFY,
+            out: CFG.OUT
          }
          console.log('esBuild Start!')
          build(cfg).then(() => {

@@ -1,7 +1,7 @@
 export const DEBUG = true
-export const MINIFY = false
+
 export const host = "localhost"
-export const port = 8000
+export const port = 8080
 
 export type CTX = {
     cwd: string    

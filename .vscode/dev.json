@@ -2,5 +2,13 @@
    "simple": {
       "TargetFolder": "",
       "Port": 80
+   },
+   "watch": {
+      "Out": "example",
+      "Entry": [
+         "./src/main.ts"
+      ],
+      "Watch": "src",
+      "Minify": false
    }
 }
