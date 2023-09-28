@@ -82,10 +82,8 @@ const handleChange = debounce(
       if (DEBUG) console.log(`[${kind}]    ${path}`)
       // we build from `src`
       if (path.includes('/src')) {
-
-         console.log('esBuild Start!')
          const cfg: buildCFG = {
-            entry: CFG.ENTRY, 
+            entry: CFG.ENTRY,
             minify: CFG.MINIFY,
             out: CFG.OUT
          }
@@ -107,6 +105,19 @@ const handleChange = debounce(
       }
    }, 400,
 );
+
+const cfg: buildCFG = {
+   entry: CFG.ENTRY,
+   minify: CFG.MINIFY,
+   out: CFG.OUT
+}
+
+console.log('esBuild Start!')
+build(cfg).then(() => {
+   console.log('Built bundle.js!')
+}).catch((err) => {
+   console.info('build err - ', err)
+})
 
 // watch and handle any file changes
 for await (const event of fileWatch) {
