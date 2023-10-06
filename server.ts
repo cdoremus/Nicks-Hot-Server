@@ -11,7 +11,7 @@ import * as CFG from './config.ts'
  * this option would be entered as cli first arg - Deno.args[0]  
  * default = root folder
  */
-const targetFolder = Deno.args[0] || CFG.TargetFolder;
+const targetFolder = Deno.args[0] || CFG.ServeFolder;
 
 
 /** 

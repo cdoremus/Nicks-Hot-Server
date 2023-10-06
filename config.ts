@@ -22,7 +22,8 @@ Minify: boolean - true or false (defaults to false)`
 /* type Config
  *
  * FileName?: string       // the name of a file to run 
- * TargetFolder?: string   // the folder to run or serve from 
+ * TargetFolder?: string   // the folder to run from 
+ * ServeFolder?: string    // the folder to serve index.html from 
  * BuildTarget?: string    // the folder to place the build bundle in 
  * Watch?: string          // a folder to watch for changes in. (to trigger a build) 
  * Port?: number           // a port number for the server or a service to use
@@ -36,6 +37,7 @@ Minify: boolean - true or false (defaults to false)`
 // requested initial default configuration
 const requiredCfg = {
    "TargetFolder": "./dist",
+   "ServeFolder": "./",
    "Port": 8080,
    "HotPort": 9099,
    "BuildTarget": "./dist",
@@ -48,11 +50,12 @@ const requiredCfg = {
 // gets an existing config, or builds one
 const cfg = getConfig("hot", Deno.args, requiredCfg)
 
-export const TargetFolder = cfg.TargetFolder || ""
+export const TargetFolder = cfg.TargetFolder || "./dist"
+export const ServeFolder = cfg.ServeFolder || ""
 export const Port = cfg.Port || 80
 export const HotPort = cfg.HotPort || 9099
 export const BuildTarget = cfg.BuildTarget || "./src/main.ts"
 export const WatchFolder = cfg.Watch || "src"
 export const MINIFY = cfg.Minify || false
 export const ENTRY = (cfg.Watch === "") ? ["./main.ts"]: [`./${cfg.Watch}/main.ts`]
-export const OUT = (cfg.TargetFolder && cfg.TargetFolder.length > 0) ? `./${cfg.TargetFolder}/bundle.js` : './bundle.js'
+export const OUT = (cfg.ServeFolder && cfg.ServeFolder.length > 0) ? `./${cfg.ServeFolder}/bundle.js` : './bundle.js'
