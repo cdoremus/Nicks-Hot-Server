@@ -28,6 +28,7 @@ An index.html file with the following:
 
 **See the /src/main.ts file above**  
 ## A good example hot app is: https://github.com/nhrones/BuenoCache/
+Checkout **_/src/_** and **_/dist/bundle.js/_** there.
 
 ## Code injection (injector.ts)
 The hot-browser-refresh is accomplished by emdedding a temporary   
