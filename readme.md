@@ -27,7 +27,7 @@ An index.html file with the following:
   in a root `src` folder with a `main.ts` as the app entry point.
 
 **See the /src/main.ts file above**  
-
+## A good example hot app is: https://github.com/nhrones/BuenoCache/
 
 ## Code injection (injector.ts)
 The hot-browser-refresh is accomplished by emdedding a temporary   
