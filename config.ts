@@ -58,4 +58,4 @@ export const BuildTarget = cfg.BuildTarget || "./src/main.ts"
 export const WatchFolder = cfg.Watch || "src"
 export const MINIFY = cfg.Minify || false
 export const ENTRY = (cfg.Watch === "") ? ["./main.ts"]: [`./${cfg.Watch}/main.ts`]
-export const OUT = (cfg.ServeFolder && cfg.ServeFolder.length > 0) ? `./${cfg.ServeFolder}/bundle.js` : './bundle.js'
+export const OUT = (cfg.TargetFolder && cfg.TargetFolder.length > 0) ? `./${cfg.TargetFolder}/bundle.js` : './bundle.js'

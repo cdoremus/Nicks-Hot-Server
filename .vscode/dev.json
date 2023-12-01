@@ -1,6 +1,6 @@
 {
    "simple": {
-      "TargetFolder": "",
+      "TargetFolder": "./dist",
       "Port": 80
    },
    "watch": {
@@ -13,6 +13,7 @@
    },
    "hot": {
       "TargetFolder": "./dist",
+      "ServeFolder": "./dist",
       "Port": 8080,
       "HotPort": 9099,
       "BuildTarget": "./dist",
