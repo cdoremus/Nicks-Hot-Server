@@ -71,9 +71,9 @@ Deno.serve({ hostname: host, port: port }, handleRequest)
 
 // launch the browser with index.html 
 openWebsite(`http://localhost:${port}`)
-
+console.log(`CFG.WatchFolders: ', ${CFG.WatchFolders}, type = ${typeof CFG.WatchFolders}`)
 // Watch for file changes
-const fileWatch = Deno.watchFs(['./src', './dist']);
+const fileWatch = Deno.watchFs(CFG.WatchFolders);//['./src', './dist']);
 
 const handleChange = debounce(
    (event: Deno.FsEvent) => {

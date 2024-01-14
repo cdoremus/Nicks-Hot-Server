@@ -25,7 +25,7 @@ Minify: boolean - true or false (defaults to false)`
  * TargetFolder?: string   // the folder to run from 
  * ServeFolder?: string    // the folder to serve index.html from 
  * BuildTarget?: string    // the folder to place the build bundle in 
- * Watch?: string          // a folder to watch for changes in. (to trigger a build) 
+ * Watch?: string[]        // Array of folders to watch for changes in. (to trigger a build) 
  * Port?: number           // a port number for the server or a service to use
  * HotPort?: number        // the SSE port number for HotServer to use 
  * CWD?: string            // current working directory 
@@ -42,7 +42,7 @@ const requiredCfg = {
    "HotPort": 9099,
    "BuildTarget": "./dist",
    "Entry": ["./src/main.ts"] ,
-   "Watch": "src",
+   "Watch": ["src"],
    "Minify": false
 } satisfies Config
 
@@ -55,7 +55,7 @@ export const ServeFolder = cfg.ServeFolder || ""
 export const Port = cfg.Port || 80
 export const HotPort = cfg.HotPort || 9099
 export const BuildTarget = cfg.BuildTarget || "./src/main.ts"
-export const WatchFolder = cfg.Watch || "src"
+export const WatchFolders = cfg.Watch?? ["src"]
 export const MINIFY = cfg.Minify || false
-export const ENTRY = (cfg.Watch === "") ? ["./main.ts"]: [`./${cfg.Watch}/main.ts`]
+export const ENTRY = (WatchFolders[0] === "") ? ["./main.ts"]: [`./${WatchFolders[0]}/main.ts`]
 export const OUT = (cfg.TargetFolder && cfg.TargetFolder.length > 0) ? `./${cfg.TargetFolder}/bundle.js` : './bundle.js'
